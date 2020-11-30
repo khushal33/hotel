@@ -1,0 +1,62 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+
+    <div fxFlex>
+        <div>
+            <h3>Menu</h3>
+            <hr>
+        </div>
+    </div>
+
+    <div fxFlex *ngIf="dishes" [@expand]>
+        <mat-grid-list cols="2"   rowHeight="400px" >
+            <mat-grid-tile *ngFor="let dish of dishes" [routerLink] = "['/dishdetail',dish._id]" appHighlight  >
+                <mat-grid-tile-header>
+                    <h1>{{dish.name | uppercase}}</h1>
+                    <span class="flex-spacer"></span>
+                    <h1>{{dish.price}}</h1>
+                </mat-grid-tile-header>
+                <img  height="400px" fxFlex src="{{ baseURL + dish.image}}" alt={{dish.name}}>
+                <mat-grid-tile-footer style="height: 20%;">
+                   
+                <p> 
+                    {{dish.description}}
+                </p>
+               
+                </mat-grid-tile-footer>
+                
+            </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+    <div [hidden]="dishes || errMess">
+        <mat-spinner></mat-spinner>
+        <h4>Loding..Please Wait</h4>
+      </div>
+      <div fxFlex *ngIf="errMess">
+        <h2>Error</h2>
+        <h4>{{errMess}}</h4>
+      </div>
+    <!-- <div class="conatiner">
+    <div  fxLayout="row wrap" fxLayoutGap="20px" >
+    
+        <mat-card class="example-card" *ngFor="let selectedDish of selectedDishes" >
+            <mat-card-header >
+                <mat-card-title>
+                    <h3>{{selectedDish.name | uppercase}}</h3>
+                </mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src={{selectedDish.image}} alt={{selectedDish.name}}>
+            <mat-card-content>
+                <p>{{selectedDish.description}}</p>
+            </mat-card-content>
+            <mat-card-footer>
+                <mat-card-actions>
+                    <button mat-button >LIKE</button>
+                    <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card-footer>
+    </mat-card>
+</div>
+</div> -->
+
+
+</div>

@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+    Register
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+
+</mat-toolbar>
+
+<form novalidate  #registerForm="ngForm"  #fform="ngForm" (ngSubmit)="onSubmit()">
+<mat-dialog-content style="height:350px; margin-left: 30px;">
+ 
+    <p>
+        <mat-form-field>
+            <input matInput #username="ngModel" placeholder="username" type="text" [(ngModel)] = "user.username" name="username" required>
+            <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput #firstname="ngModel" placeholder="First Name" type="text" [(ngModel)] = "user.firstname" name="firstname" required>
+            <mat-error *ngIf="firstname.errors?.required">First Name is required</mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput #lastname="ngModel" placeholder="Last Name" type="text" [(ngModel)] = "user.lastname" name="lastname" required>
+            <mat-error *ngIf="lastname.errors?.required">Last Name is required</mat-error>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput  #password="ngModel" placeholder="password" type="password" [(ngModel)] = "user.password" name="password" required>
+            <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+        </mat-form-field>
+    </p>
+   
+</mat-dialog-content>
+<mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancle</button>
+    <button mat-button type="submit" class="background-primary rext-foral-white" [disabled]="registerForm.form.invalid">Login</button>
+</mat-dialog-actions>
+</form>

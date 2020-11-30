@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'variables';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+body {
+    padding: 0;
+    margin: 0;
+    font-family:"Gill Sans", sans-serif;
+   
+}
+.container{
+    margin: 20px;
+    display: flex;
+}
+
+.flex-spacer{
+    flex:1 1 auto;
+}
+
+.highlight {
+    background-color : white;
+    border: 3px solid  rgb(205, 171, 206);
+    z-index: 1;
+    transform: scale(1.02);
+}

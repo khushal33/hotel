@@ -1,0 +1,73 @@
+<div class="container" fxLayout="row wrap " fxLayout.xs="column" >
+
+          <div  *ngFor="let dish of dishes" class="flex-item"  [@expand]>
+            <mat-card  *ngIf="dishes" style="height:600px;">
+              <mat-card-header  style="height: 90px;">
+              
+                  <h3>{{dish.name | uppercase}}</h3>
+                  <span class="flex-spacer"></span>
+                  <div mat-card-avatar-left><h2 style="color: green;">{{dish.price}}</h2></div>
+              </mat-card-header>
+              
+              <mat-card-content>
+                <img style="height: 300px;"  mat-card-image src="{{baseURL + dish.image}}" alt={{dish.name}}>
+                <p style="max-height: 200px;">{{dish.description}} </p>
+                
+               
+                
+              </mat-card-content>
+            </mat-card>
+            </div>
+            <div [hidden]="dishes || errMess">
+              <mat-spinner></mat-spinner>
+              <h4>Loding..Please Wait</h4>
+            </div>
+            <div  *ngIf="errMess" >
+              <h2>Error</h2>
+              <h4>{{errMess}}</h4>
+            </div>
+            <div  *ngFor="let promotion of promotions" class="flex-item" appHighlight [@expand]>
+                <mat-card *ngIf="promotions" class="flex-item" >
+                  <mat-card-header>
+                    <div mat-card-avatar></div>
+                    <mat-card-title>
+                      <h3>{{promotion.name | uppercase}}</h3>
+                    </mat-card-title>
+                  </mat-card-header>
+                
+                  <mat-card-content>
+                    <img  mat-card-image src="{{baseURL + promotion.image}}" alt={{promotion.name}}>
+                    <p>{{promotion.description}}
+                    </p>
+                  </mat-card-content>
+                </mat-card>
+            </div>
+          <div [hidden]="promotions || errMess">
+            <mat-spinner></mat-spinner>
+            <h4>Loding..Please Wait</h4>
+          </div>
+          <div  *ngFor="let leader of leaders" class="flex-item" appHighlight [@expand]>
+          <mat-card *ngIf="leaders" class="flex-item" appHighlight [@expand]>
+              <mat-card-header>
+                <div mat-card-avatar></div>
+                <mat-card-title>
+                  <h3>{{leader.label | uppercase}}</h3>
+                </mat-card-title>
+              </mat-card-header>
+             
+              <mat-card-content>
+                <img  mat-card-image src="{{baseURL + leader.image}}" alt={{leader.name}}>
+                  <h3>{{leader.name | uppercase}}</h3>
+                <p>{{leader.description}}
+                </p>
+              </mat-card-content>
+            </mat-card>
+         
+          <div [hidden]="leaders || errMess" >
+            <mat-spinner></mat-spinner>
+            <h4>Loding..Please Wait</h4>
+          </div>
+        
+
+</div>
+

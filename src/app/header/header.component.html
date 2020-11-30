@@ -1,0 +1,82 @@
+
+
+<mat-toolbar color="primary">
+  <div fxShow="true" fxHide.gt-sm="true">
+    <a (click)="sidenav.toggle()"><span class="fa fa-list fa-lg"></span></a>
+   
+  </div>
+  <span><img src="/assets/images/logo.png" height=30 width=41></span>
+  <div fxShow="true" fxHide.lt-md="true">
+    
+    <a mat-button routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+    <a mat-button routerLink="/aboutus" routerLinkActive="active"><span class="fa fa-info fa-lg"></span> About</a>
+    <a mat-button routerLink="/menu" routerLinkActive="active"><span class="fa fa-list fa-lg"></span> Menu</a>
+    <a mat-button routerLink="/contact" routerLinkActive="active"><span class="fa fa-address-card fa-lg"></span> Contact</a>
+    <a *ngIf="username" mat-button routerLink="/favorites" routerLinkActive="active"><span class="fa fa-heart-o fa-lg"></span> Favorites</a>
+    <span class="flex-spacer"></span>
+    <a *ngIf="!username" mat-button (click)="openRegisterForm()"><span class="fa fa-sign-in fa-lg"></span> Register</a>
+    <a *ngIf="!username" mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+    <a *ngIf="username" style="font-family:'Courier New', Courier, monospace"><span class="fa fa-user fa-lg"></span>{{username}}</a>
+    <a *ngIf="username" mat-button (click)="logOut()"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
+ </div>
+
+ <div fxShow="true" fxHide.gt-sm="true">
+
+  
+  <h1 *ngIf="!username">Ristorante In My Home</h1>
+  <span class="flex-spacer"></span>
+  <a *ngIf="username" style="font-family:'Courier New', Courier, monospace"><span class="fa fa-user fa-lg"></span>{{username}}</a>
+</div>
+
+  </mat-toolbar>
+  
+
+  <mat-sidenav-container fxFlexFill  class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+  
+        <a mat-button routerLink="/home" routerLinkActive="active"><span class="fa fa-home fa-lg"></span> Home</a>
+        <a mat-button routerLink="/aboutus" routerLinkActive="active"><span class="fa fa-info fa-lg"></span> About</a>
+        <a mat-button routerLink="/menu" routerLinkActive="active"><span class="fa fa-list fa-lg"></span> Menu</a>
+        <a mat-button routerLink="/contact" routerLinkActive="active"><span class="fa fa-address-card fa-lg"></span> Contact</a>
+        <span class="flex-spacer"></span>
+        <a *ngIf="!username" mat-button (click)="openRegisterForm()"><span class="fa fa-sign-in fa-lg"></span> Register</a>
+        <a *ngIf="!username" mat-button (click)="openLoginForm()"><span class="fa fa-sign-in fa-lg"></span> Login</a>
+        
+        <a *ngIf="username" mat-button (click)="logOut()"><span class="fa fa-sign-out fa-lg"></span> Logout</a>
+  
+    </div>
+    </mat-sidenav>
+    <mat-sidenav-content >
+      <div class="container jumbotron"
+      fxLayout="row"
+      fxLayout.sm="column" 
+      fxLayout.xs="column" 
+      fxLayoutAlign.xs="start center"
+      fxLayoutAlign.sm="start center" 
+      fxLayoutAlign.gt-sm="center center" 
+      fxLayoutGap="10px">
+  
+    <div fxFlex fxFlex.gt-sm="50%">
+      <h1>Ristorante In My Home</h1>
+      <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations
+        will tickle your culinary senses!</p>
+    </div>
+    <div fxFlex fxFlex.gt-sm="20%">
+      <img height="200px" width="250px" src="/assets/images/logo.png" alt="Logo">
+    </div>
+    <div fxFlex></div>
+  </div>
+  <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+   
+
+  
+  
+  
+  
+
+
+ 
